@@ -1,0 +1,10 @@
+# data (ASHRAE RP-1043 is licensed and not redistributed) and run outputs
+data/raw/
+data/processed/
+output/*
+!output/.gitkeep
+
+# python
+__pycache__/
+*.pyc
+*.tmp
