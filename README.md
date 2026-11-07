@@ -1,7 +1,7 @@
 # LW-PVT: lightly weighted physics-labeled virtual sample training
 
 Code of the paper *Lightly weighted physics-labeled virtual sample training for improving the
-extrapolation of chiller COP prediction* (N. Kim and S. Sim, submitted to Applied Energy).
+extrapolation of chiller COP prediction* (N. Kim and S. Sim).
 
 The repository contains the data preparation, the 15 extrapolation scenarios, the proposed method
 (LW-PVT) and the nine comparison models of the main results table (Table 3 of the paper), and the
@@ -13,12 +13,12 @@ LW-PVT trains one multilayer perceptron with three loss terms,
 
     L = L_data + lambda1 * L_virtual + L_phys
 
-* `L_data`: mean squared error on the measured training data.
-* `L_virtual`: weighted squared error on N = 1,024 **virtual samples** placed in the unmeasured part of
+L_data: mean squared error on the measured training data.
+L_virtual: weighted squared error on N = 1,024 virtual samples placed in the unmeasured part of
   the operating range. Their labels come from a Gordon-Ng regression fitted to the training data only,
   and each sample carries an inverse-variance share p_j of the total weight W = lambda1 * n_train
   (lambda1 = 0.0005).
-* `L_phys`: hinge penalties at 512 collocation points: dCOP/dT_cw,in <= 0, d2COP/dQ_e2 <= 0 and
+L_phys: hinge penalties at 512 collocation points: dCOP/dT_cw,in <= 0, d2COP/dQ_e2 <= 0 and
   1 <= COP <= COP_Carnot.
 
 Only the training data and the operating range are used; no manufacturer data and no test
